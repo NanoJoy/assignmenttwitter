@@ -13,6 +13,19 @@ function addError(&$errors, $message) {
     array_push($errors['messages'], $message); 
 }
 
+function checkUserExists($username = "") {
+    $url = 'https://api.twitter.com/1.1/users/lookup.json';
+    $requestMethod = 'GET';
+    $getField = 'screen_name=' . $username;
+
+    $twitter = new TwitterAPIExchange($GLOBALS['settings']);
+    $result =  $twitter->setGetField($getField)
+                       ->buildOauth($url, $requestMethod)
+                       ->performRequest();
+    $result = json_decode($result);
+    return !(array_key_exists('errors', $result));
+}
+
 function getTweets($username = "", $search = "", $location = null, $tweetCount = 20) {
 
     $errors = [
@@ -83,5 +96,6 @@ $location = [
     'unit' => 'mi'
 ];
 
-echo getTweets('harinef', '', $location, 5);
+echo var_dump(checkUserExists('harinef'));
+echo var_dump(checkUserExists('hellothereidonotexist3434343'));
 ?>
