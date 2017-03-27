@@ -10,5 +10,30 @@
         <label for="screenName">Screen name</label>
         <input type="text" id="screenName">
         <span id="screenNameHelp" class="helper"></span>
+        <br />
+        <label for="searchTerms">Search terms</label>
+        <input type="text" id="searchTerms">
+        <br />
+        <label for="tweetCount">Number of tweets</label>
+        <input type="number" id="tweetCount" min="0">
+        <br />
+        <label for="latitude">Latitude</label>
+        <input type="number" id="latitude" min="-90" max="90">
+        <br />
+        <label for="longitude">Longitude</label>
+        <input type="number" id="longitude" min="-180" max="180">
+        <br />
+        <label for="radius">Within</label>
+        <input type="number" id="radius">
+        <select type="select" id="unit">
+            <option value="mi">miles</option>
+            <option value="km">kilometers</option>
+        </select>
+        <br />
+        <button id="submitButton">Search</button>
+        <div id="errors"></div>
+    </div>
+    <div id="resultsDiv">
+
     </div>
 </body>

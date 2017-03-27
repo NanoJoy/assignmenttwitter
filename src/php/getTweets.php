@@ -77,6 +77,9 @@ $location = [
     'unit' => 'mi'
 ];
 
-echo var_dump(checkUserExists('harinef'));
-echo var_dump(checkUserExists('hellothereidonotexist3434343'));
+$screenName = $_GET['screenName'];
+$searchTerms = $_GET['searchTerms'];
+$tweetCount = intval($_GET['tweetCount']);
+
+echo getTweets($screenName, $searchTerms, null, $tweetCount);
 ?>
