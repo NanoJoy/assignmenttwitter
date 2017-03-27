@@ -17,19 +17,27 @@
         <label for="tweetCount">Number of tweets</label>
         <input type="number" id="tweetCount" min="0">
         <br />
-        <label for="latitude">Latitude</label>
-        <input type="number" id="latitude" min="-90" max="90">
+        <input type="checkbox" id="usingLocation">
+        <label for="usingLocation">Filter by location</label>
         <br />
-        <label for="longitude">Longitude</label>
-        <input type="number" id="longitude" min="-180" max="180">
-        <br />
-        <label for="radius">Within</label>
-        <input type="number" id="radius">
-        <select type="select" id="unit">
-            <option value="mi">miles</option>
-            <option value="km">kilometers</option>
-        </select>
-        <br />
+        <div id="locationInputs">
+            <input type="checkbox" id="useMyLocation">
+            <label for="useMyLocation">Use my current location</label>
+            <br />
+            <label for="latitude">Latitude</label>
+            <input type="number" id="latitude" min="-90" max="90">
+            <br />
+            <label for="longitude">Longitude</label>
+            <input type="number" id="longitude" min="-180" max="180">
+            <br />
+            <label for="radius">Within</label>
+            <input type="number" id="radius">
+            <select type="select" id="unit">
+                <option value="mi">miles</option>
+                <option value="km">kilometers</option>
+            </select>
+            <br />
+        </div>
         <button id="submitButton">Search</button>
         <div id="errors"></div>
     </div>
