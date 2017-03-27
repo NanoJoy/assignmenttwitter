@@ -73,7 +73,11 @@ function getTweets($username = "", $search = "", $location = null, $tweetCount =
 $screenName = $_GET['screenName'];
 $searchTerms = $_GET['searchTerms'];
 $tweetCount = intval($_GET['tweetCount']);
-$location = $_GET['location'];
+if (array_key_exists('location', $_GET)) {
+    $location = $_GET['location'];
+} else {
+    $location = null;
+}
 
 echo getTweets($screenName, $searchTerms, $location, $tweetCount);
 ?>

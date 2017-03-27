@@ -8,6 +8,14 @@ $(function () {
     var radius = $("#radius");
     var unit = $("#unit");
 
+    function makeTweetDisplay(text) {
+        var html =  '<div class="tweetDisplay">'
+                +      '<p>' + text + '</p>'
+                +      '<button class="hideTweet">Hide</button>'
+                +  '</div>';
+        return html;
+    }
+
     //Check if screen name exists as user types it in
     screenNameInput.keyup(function (e) {
         var screenNameHelp = $("#screenNameHelp");
@@ -128,8 +136,13 @@ $(function () {
                         resultsDiv.append("<p>No tweets found matching search</p>");
                     }
                     for (var i = 0; i < tweets.length; i++) {
-                        resultsDiv.append("<p>" + tweets[i].text + "</p>");
+                        resultsDiv.append(makeTweetDisplay(tweets[i].text));
                     }
+                    $(".hideTweet").unbind("click");
+
+                    $(".hideTweet").click(function (e) {
+                        $(this).parent().remove();
+                    });
                 },
                 dataType: "json"
             });
