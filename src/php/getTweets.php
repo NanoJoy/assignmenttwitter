@@ -31,23 +31,23 @@ function getTweets($username = "", $search = "", $location = null, $tweetCount =
 
     if (is_array($location)) {
         if (array_key_exists('latitude', $location) && is_numeric($location['latitude'])) {
-            /*$location['latitude'] = floatval($location['latitude']);
+            $location['latitude'] = floatval($location['latitude']);
             if ($location['latitude'] < -90 || $location['latitude'] > 90) {
                 addError($errors, "Latitude out of range");
-            }*/
+            }
         } else {
             addError($errors, "Latitude not valid");
         }
         if (array_key_exists('longitude', $location) && is_numeric($location['longitude'])) {
-           /* $location['longitude'] = floatval($location['longitude']);
+           $location['longitude'] = floatval($location['longitude']);
             if ($location['longitude'] < -180 || $location['longitude'] > 180) {
                 addError($errors, "Longitude out of range");
-            }*/
+            }
         } else {
             addError($errors, "Longitude not valid");
         }
         if (array_key_exists('radius', $location) && is_numeric($location['radius'])) {
-            //$location['radius'] = intval($location['radius']);
+            $location['radius'] = intval($location['radius']);
         } else {
             $location['radius'] = 1;
         }
@@ -56,7 +56,6 @@ function getTweets($username = "", $search = "", $location = null, $tweetCount =
         }
         $getField = $getField . '&geocode=' . $location['latitude'] . ',' . $location['longitude'] . ',' . $location['radius'] . $location['unit'];
     }
-    //$getField = $getField . '&geocode=' . 48.8566 . ',' . 2.3522 . ',' . 10 . 'mi';
 
     $getField = $getField . "&count=" . urlencode($tweetCount);
 
