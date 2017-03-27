@@ -1,29 +1,10 @@
 <?php
 require_once 'libraries/TwitterAPIExchange.php';
-
-$settings = [
-    'oauth_access_token' => '3302732766-tVsVY4btoBs6PCAJNoqnoxsimg7IytB13UF54nv',
-    'oauth_access_token_secret' => 'RzujVpYtwBEsKluUQafJDU98Wg20hy9ctmXaeou59oqOm',
-    'consumer_key' => 'fGoMl4PyMXGWXfSxJq0e6sNVr',
-    'consumer_secret' => 'Vxi3U14ndZXiYMmF6s3jyrzvHLTt0C98MSODJMIRtB2zbHlinD'
-];
+require_once 'apisettings.php';
 
 function addError(&$errors, $message) {
     $errors['error'] = true;
     array_push($errors['messages'], $message); 
-}
-
-function checkUserExists($username = "") {
-    $url = 'https://api.twitter.com/1.1/users/lookup.json';
-    $requestMethod = 'GET';
-    $getField = 'screen_name=' . $username;
-
-    $twitter = new TwitterAPIExchange($GLOBALS['settings']);
-    $result =  $twitter->setGetField($getField)
-                       ->buildOauth($url, $requestMethod)
-                       ->performRequest();
-    $result = json_decode($result);
-    return !(array_key_exists('errors', $result));
 }
 
 function getTweets($username = "", $search = "", $location = null, $tweetCount = 20) {
